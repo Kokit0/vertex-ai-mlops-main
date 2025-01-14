@@ -1,0 +1,36 @@
+digraph {
+	rankdir=LR
+	compound=True
+	subgraph cluster_vertex {
+		color="#1E8E3E" label="Vertex AI" style="filled,rounded"
+		subgraph cluster_nb {
+			color="#5BB974" label="Vertex AI Workbench Instance" style="filled,rounded"
+			cj3 [label=Compute color="#BDC1C6" fillcolor="#BDC1C6" penwidth=3 shape=rectangle style="filled,rounded"]
+			cj2 [label=Container color="#BDC1C6" fillcolor="#BDC1C6" penwidth=3 shape=rectangle style="filled,rounded"]
+			subgraph cluster_ide {
+				color="#A8DAB5" label="IDE
+(JupyterLab)" style="filled,rounded"
+				cj1 [label=Code color="#BDC1C6" fillcolor="#BDC1C6" penwidth=3 shape=rectangle style="filled,rounded"]
+			}
+		}
+		subgraph cluster_ar {
+			color="#5BB974" label="Vertex AI Pre-Built Containers" style="filled,rounded"
+			subgraph cluster_art {
+				color="#A8DAB5" label="For Training" style="filled,rounded"
+				art [label="Framework/Version
+Specific Container" color="#BDC1C6" fillcolor="#BDC1C6" penwidth=3 shape=rectangle style="filled,rounded"]
+			}
+		}
+	}
+	subgraph cluster_bq {
+		color="#669DF6" label=BigQuery style="filled,rounded"
+		bq [label=Table color="#BDC1C6" fillcolor="#BDC1C6" penwidth=3 shape=rectangle style="filled,rounded"]
+	}
+	subgraph cluster_gcs2 {
+		color="#FCC934" label=GCS style="filled,rounded"
+		gcs2 [label="Model Save Files" color="#BDC1C6" fillcolor="#BDC1C6" penwidth=3 shape=rectangle style="filled,rounded"]
+	}
+	art -> cj2 [label=URI color="#5F6368" penwidth=3]
+	cj1 -> gcs2 [label=Copy color="#5F6368" penwidth=3]
+	bq -> cj1 [color="#5F6368" penwidth=3]
+}

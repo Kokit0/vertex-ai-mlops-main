@@ -1,0 +1,10 @@
+*-checkpoint.*
+.gitignore-checkpoint
+temp
+.pyc
+iframe_figures
+.DS_Store
+terraform.tfstate
+.terraform/
+terraform.tfstate.backup
+.terraform.lock.hcl
